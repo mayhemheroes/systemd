@@ -1,0 +1,4 @@
+project: PROJECT
+target: fuzz-bcd
+cmds:
+- cmd: /out/fuzz-bcd
