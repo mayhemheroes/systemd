@@ -9,6 +9,7 @@
 #include "fuzz.h"
 #include "hexdecoct.h"
 #include "iovec-util.h"
+#include "log.h"
 
 static FILE *null = NULL;
 
@@ -41,7 +42,7 @@ static int io_callback(sd_event_source *s, int fd, uint32_t revents, void *userd
                         else
                                 assert_se(errno == EAGAIN);
                 } else
-                        iovec_inc(iov, n);
+                        iovec_increment(iov, 1, n);
         }
 
         if (revents & EPOLLIN) {
